@@ -24,14 +24,16 @@ func move():
 func _input(event):
 	if is_rotating:
 		return
-	if event.is_action_pressed("ui_up"):
+
+	if event.is_action_pressed("move_up"):
 		move()
-	if event.is_action_pressed("ui_left"):
+	elif event.is_action_pressed("move_left"):
 		rotate_and_set_direction(90)
-	if event.is_action_pressed("ui_right"):
+	elif event.is_action_pressed("move_right"):
 		rotate_and_set_direction(-90)
-	if event.is_action_pressed("ui_down"):
+	elif event.is_action_pressed("move_down"):
 		rotate_and_set_direction(180)
+
 
 
 func rotate_and_set_direction(angle_delta: float):
