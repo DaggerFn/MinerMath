@@ -375,6 +375,9 @@ texture = ExtResource("1_vs0g8")
 12:14/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_no6t2"]
+terrain_set_0/mode = 0
+custom_data_layer_0/name = ""
+custom_data_layer_0/type = 0
 sources/0 = SubResource("TileSetAtlasSource_xs7ln")
 
 [node name="Map" type="Node2D"]
@@ -382,5 +385,6 @@ script = ExtResource("1_xvy16")
 
 [node name="MapCreator" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAAACAAMAAAABAAAAAAACAAMAAAACAAAAAAACAAMAAAADAAAAAAACAAMAAAAEAAAAAAACAAMAAAAFAAAAAAACAAMAAAAGAAAAAAACAAMAAAAGAAEAAAACAAMAAAAGAAIAAAACAAMAAAA=")
+enabled = false
 tile_set = SubResource("TileSet_no6t2")
 rendering_quadrant_size = 32
