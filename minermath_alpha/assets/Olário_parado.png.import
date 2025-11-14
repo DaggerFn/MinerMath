@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clae1i8hkbkgk"
-path="res://.godot/imported/Captura de tela de 2025-09-04 19-33-21.png-5474d4c8258a724c9552bb4637804520.ctex"
+uid="uid://j6w4ih2l8om"
+path="res://.godot/imported/Olário_parado.png-4660be66a3333e2e4123b161fb102759.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Captura de tela de 2025-09-04 19-33-21.png"
-dest_files=["res://.godot/imported/Captura de tela de 2025-09-04 19-33-21.png-5474d4c8258a724c9552bb4637804520.ctex"]
+source_file="res://assets/Olário_parado.png"
+dest_files=["res://.godot/imported/Olário_parado.png-4660be66a3333e2e4123b161fb102759.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

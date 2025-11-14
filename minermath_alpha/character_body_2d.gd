@@ -35,6 +35,7 @@ func _physics_process(delta):
 
 	# --- 4. Quebrar Bloco (Ação de Interação) ---
 	if Input.is_action_just_pressed("interact"): 
+		
 		check_and_break_block() # Chama a nova função de quebra
 
 	# --- 5. Mover e Colidir ---
