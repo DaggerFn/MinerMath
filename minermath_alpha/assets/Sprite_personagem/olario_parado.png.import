@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct4qd3x4n2lfm"
-path="res://.godot/imported/0.png-3ec6824bb41d48dc59f66cc03de429a7.ctex"
+uid="uid://7q6x11rb7ud7"
+path="res://.godot/imported/olario_parado.png-0ff32bbf153d3e3793453ff4efc70efd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/imagens_blocos/0.png"
-dest_files=["res://.godot/imported/0.png-3ec6824bb41d48dc59f66cc03de429a7.ctex"]
+source_file="res://assets/Sprite_personagem/olario_parado.png"
+dest_files=["res://.godot/imported/olario_parado.png-0ff32bbf153d3e3793453ff4efc70efd.ctex"]
 
 [params]
 

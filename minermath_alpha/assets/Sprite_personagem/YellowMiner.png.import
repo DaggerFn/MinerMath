@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct4qd3x4n2lfm"
-path="res://.godot/imported/0.png-3ec6824bb41d48dc59f66cc03de429a7.ctex"
+uid="uid://bhqm1nu61ds7y"
+path="res://.godot/imported/YellowMiner.png-45464727ae5869533db690859217bbf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/imagens_blocos/0.png"
-dest_files=["res://.godot/imported/0.png-3ec6824bb41d48dc59f66cc03de429a7.ctex"]
+source_file="res://assets/Sprite_personagem/YellowMiner.png"
+dest_files=["res://.godot/imported/YellowMiner.png-45464727ae5869533db690859217bbf5.ctex"]
 
 [params]
 
