@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://edd0pdq33iil"]
 
 [ext_resource type="Script" uid="uid://qklb3pgo48r5" path="res://static_body_2d.gd" id="1_wh2cu"]
-[ext_resource type="Texture2D" uid="uid://c5oplwa1gq2uu" path="res://icon.svg" id="2_8jbc1"]
+[ext_resource type="Texture2D" uid="uid://dqvnd4hil28np" path="res://Assets/Captura de Tela 2025-11-13 às 21.09.03.png" id="2_8jbc1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jbc1"]
-size = Vector2(25, 25)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jbc1"]
 
-[node name="Node2D" type="Node2D"]
+[node name="blocoMult" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("1_wh2cu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_8jbc1")
+position = Vector2(0, -1.7763568e-15)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("CircleShape2D_8jbc1")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(0.37499714, 0.24999237)
-scale = Vector2(0.19726567, 0.19921884)
+position = Vector2(0, -2.9802322e-08)
+scale = Vector2(0.073900625, 0.07757531)
 texture = ExtResource("2_8jbc1")

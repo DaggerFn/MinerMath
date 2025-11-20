@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvvbb8ifm5nhr"
-path="res://.godot/imported/terrain_tileset.png-f5dead448e3c9c9e63f4b0cdaf8258c5.ctex"
+uid="uid://ntho1aa7l4ll"
+path="res://.godot/imported/Captura de Tela 2025-11-13 às 21.08.04.png-9a3c1342b4aa01d4cd023eadcf4e5758.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain_tileset.png"
-dest_files=["res://.godot/imported/terrain_tileset.png-f5dead448e3c9c9e63f4b0cdaf8258c5.ctex"]
+source_file="res://Assets/Captura de Tela 2025-11-13 às 21.08.04.png"
+dest_files=["res://.godot/imported/Captura de Tela 2025-11-13 às 21.08.04.png-9a3c1342b4aa01d4cd023eadcf4e5758.ctex"]
 
 [params]
 
