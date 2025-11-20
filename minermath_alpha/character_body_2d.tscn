@@ -883,3 +883,10 @@ position = Vector2(489, 434)
 
 [node name="Node2D2" parent="." instance=ExtResource("7_4sjlk")]
 position = Vector2(625, 438)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(500, 500)
+offset_right = 40.0
+offset_bottom = 23.0
