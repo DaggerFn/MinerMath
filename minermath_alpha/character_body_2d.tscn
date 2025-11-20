@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://bekfyxj427xtj"]
+[gd_scene load_steps=14 format=4 uid="uid://bekfyxj427xtj"]
 
 [ext_resource type="Texture2D" uid="uid://dn8samab2x6jv" path="res://green.jpeg" id="1_44cfe"]
 [ext_resource type="Texture2D" uid="uid://j6w4ih2l8om" path="res://Olário_parado.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://nrl3kgqgjo8e" path="res://character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://dvvbb8ifm5nhr" path="res://terrain_tileset.png" id="2_dd465"]
 [ext_resource type="Texture2D" uid="uid://c6iwfk6j5sck6" path="res://pratfarmer3.png" id="3_dd465"]
-[ext_resource type="PackedScene" uid="uid://edd0pdq33iil" path="res://bloc.tscn" id="7_4sjlk"]
+[ext_resource type="PackedScene" uid="uid://c2ib78a4drufn" path="res://block_10.tscn" id="6_qp52p"]
+[ext_resource type="PackedScene" uid="uid://edd0pdq33iil" path="res://block_2.tscn" id="7_4sjlk"]
+[ext_resource type="PackedScene" uid="uid://bf846ugtco1ja" path="res://block_6.tscn" id="7_6ct3r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
 size = Vector2(1153, 150.75)
@@ -869,17 +871,11 @@ shape = SubResource("RectangleShape2D_qp52p")
 position = Vector2(325, 462)
 target_position = Vector2(0, -26)
 
-[node name="Node2D" parent="." instance=ExtResource("7_4sjlk")]
-position = Vector2(369, 433)
+[node name="Node2D" parent="." instance=ExtResource("6_qp52p")]
+position = Vector2(324, 434)
 
-[node name="Node2D5" parent="." instance=ExtResource("7_4sjlk")]
-position = Vector2(780, 430)
-
-[node name="Node2D4" parent="." instance=ExtResource("7_4sjlk")]
-position = Vector2(237, 434)
+[node name="Node2D2" parent="." instance=ExtResource("7_6ct3r")]
+position = Vector2(393, 433)
 
 [node name="Node2D3" parent="." instance=ExtResource("7_4sjlk")]
-position = Vector2(489, 434)
-
-[node name="Node2D2" parent="." instance=ExtResource("7_4sjlk")]
-position = Vector2(625, 438)
+position = Vector2(467, 433)
