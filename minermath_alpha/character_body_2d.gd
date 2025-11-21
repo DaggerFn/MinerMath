@@ -1,59 +1,141 @@
-# Player.gd (Anexar a um CharacterBody2D)
-
+# Player.gd (Anexado ao CharacterBody2D)
 extends CharacterBody2D
 
-# Configurações de Movimento
+# --- VARIÁVEIS DE MOVIMENTO ---
 const SPEED = 200.0
 const JUMP_VELOCITY = -450.0
-
-# Gravidade padrão (Você deve configurá-la nas configurações do projeto!)
 var gravity = 980 
+var current_target_number: int = 3 # O divisor que o jogador deve procurar
 
-# Referência ao nó RayCast2D que você adicionou
-# Ele busca o nó chamado "RayCast2D" que é filho deste CharacterBody2D
 @onready var block_detector = $RayCast2D 
+@onready var animated_sprite = $AnimatedSprite2D
+
+# --- VARIÁVEIS DO GERADOR DE NÍVEL ---
+# Pré-carrega a CENA SEPARADA de randomização
+const RandomizerScene = preload("res://randomização_blocos.tscn") # ⚠️ Verifique o caminho exato!
+
+var is_breaking = false
 
 func _ready():
-	# Obtém a gravidade definida nas configurações do projeto
 	gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+	randomize() 
+	
+	# 🔑 CHAMA O GERADOR DE NÍVEL, passando a raiz da cena (Node2D) como referência.
+	instantiate_and_generate_level(get_parent())
+
 
 func _physics_process(delta):
-	# --- 1. Aplicar Gravidade ---
-	if not is_on_floor():
+	# 1. Aplica a gravidade sempre
+	if not is_on_floor(): 
 		velocity.y += gravity * delta
-
-	# --- 2. Pulo (Jump) ---
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	
+	# 2. SE ESTIVER QUEBRANDO, saia (só permite a gravidade e o move_and_slide)
+	if is_breaking:
+		# Define a velocidade horizontal como zero enquanto quebra
+		velocity.x = 0
+		update_movement_animation()
+		move_and_slide()
+		return # <-- IMPEDE TODAS AS ENTRADAS DE MOVIMENTO ABAIXO
+	
+	# 3. Lógica de Pulo
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor(): 
 		velocity.y = JUMP_VELOCITY
-
-	# --- 3. Movimento Horizontal ---
+	
+	# 4. Lógica de Movimento
 	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if direction: 
 		velocity.x = direction * SPEED
-	else:
+	else: 
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	# --- 4. Quebrar Bloco (Ação de Interação) ---
-	if Input.is_action_just_pressed("interact"): 
-		check_and_break_block() # Chama a nova função de quebra
-
-	# --- 5. Mover e Colidir ---
+	# 5. Lógica de Interação/Quebra
+	if Input.is_action_just_pressed("interact"):
+		# Agora chama a função que verifica a colisão e SÓ INICIA a animação
+		# se a colisão ocorrer.
+		check_and_break_block()
+	
+	# 6. Atualiza Animação e Movimento
+	update_movement_animation()
 	move_and_slide()
+	
+func update_movement_animation():
+	if is_breaking:
+		return
+	
+	if velocity.x != 0:
+		animated_sprite.flip_h = velocity.x < 0
+		
+	if is_on_floor():
+		if velocity.x != 0:
+			if animated_sprite.animation != "Andando":
+				animated_sprite.play("Andando")
+		else:
+			if animated_sprite.animation != "Parado":
+				animated_sprite.play("Parado")
+	else:
+		if animated_sprite.animation != "Andando" and animated_sprite.animation != "Parado":
+			animated_sprite.play("Andando")
 
-# --- NOVO CÓDIGO DE QUEBRA USANDO O NÓ RAYCAST2D ---
+func start_break_animation():
+	if is_breaking:
+			return
+	
+	is_breaking = true
+	animated_sprite.play("Quebrando bloco")
+	
+	if animated_sprite.animation_finished.is_connected(on_break_animation_finished):
+		animated_sprite.animation_finished.disconnect(on_break_animation_finished)
+	
+	animated_sprite.animation_finished.connect(on_break_animation_finished)
+	
+	block_detector.target_position.x = 25 if !animated_sprite.flip_h else -25
+
+func on_break_animation_finished():
+	animated_sprite.animation_finished.disconnect(on_break_animation_finished)
+	is_breaking = false
+	update_movement_animation()
+
+## 💥 Lógica de Detecção e Geração
+
 func check_and_break_block():
-	# Força o raycast a verificar colisões imediatamente (importante!)
 	block_detector.force_raycast_update()
 	
 	if block_detector.is_colliding():
-		# Pega o objeto (nó) que o raio atingiu
 		var object = block_detector.get_collider()
 		
-		# Verifica se o objeto atingido tem o método "break_block" (que está no Bloco.gd)
-		if object.has_method("break_block"):
-			print("Bloco atingido e quebrado!")
-			object.break_block()
-		else:
-			print("Atingiu algo, mas não é um bloco destrutível.")
-	else:
-		print("Nenhum objeto encontrado na direção do raio.")
+		if object.has_method("try_break"):
+			# 1. Inicia a animação DEPOIS de saber que há algo para quebrar
+			start_break_animation()
+			
+			# 2. O Player informa o alvo e o bloco decide a quebra
+			object.try_break(current_target_number)
+
+func instantiate_and_generate_level(main_root_node: Node):
+	
+	# 🚨 CHECAGEM CRÍTICA 1: O Randomizador foi carregado?
+	if RandomizerScene == null:
+		push_error("ERRO GRAVE: A cena 'randomização_blocos.tscn' não foi pré-carregada. Verifique o caminho no 'preload'!")
+		return
+
+	# ... (o restante do código é igual) ...
+	var block_positions_node = main_root_node.get_node_or_null("Block_position")
+	
+	if not block_positions_node:
+		push_error("ERRO GRAVE: O nó 'Block_position' não foi encontrado na raiz da cena!")
+		return
+		
+	var randomizer = RandomizerScene.instantiate()
+	
+	# 🚨 CHECAGEM CRÍTICA 2: O Gerador foi instanciado corretamente?
+	if not is_instance_valid(randomizer):
+		push_error("ERRO GRAVE: Falha ao instanciar a cena do Randomizador!")
+		return
+
+	main_root_node.call_deferred("add_child", randomizer)
+	
+	var position_markers = block_positions_node.get_children()
+	
+	randomizer.generate_level(position_markers, main_root_node)
+
+	# 🔑 Se você chegar a esta linha, a geração começou.
+	print("Sucesso: A função de geração de nível foi chamada.")
