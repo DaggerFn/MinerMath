@@ -935,3 +935,10 @@ position = Vector2(521, 438)
 
 [node name="Marker2D5" type="Marker2D" parent="Block_position"]
 position = Vector2(613, 438)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Multiplo: "
