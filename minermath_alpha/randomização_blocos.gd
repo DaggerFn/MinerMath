@@ -2,19 +2,25 @@
 extends Node2D 
 
 # --- VARIÁVEIS DO GERADOR DE NÍVEL ---
-const LEVEL_BLOCK_NUMBERS = [2, 6, 8, 10, 12, 14, 16, 18, 20] 
+const LEVEL_BLOCK_NUMBERS = [2, 3, 6, 8, 9, 10, 12, 15, 14, 16, 18, 20, 21, 24, 25] 
 
 # MAPA DE SPRITES (Catálogo que associa número ao arquivo)
 const NUMBER_TO_SPRITE = {
 	2: preload("res://assets/imagens_blocos/2.png"),
+	3: preload("res://assets/imagens_blocos/3.png"),
 	6: preload("res://assets/imagens_blocos/6.png"),
 	8: preload("res://assets/imagens_blocos/8.png"),
+	9: preload("res://assets/imagens_blocos/9.png"),
 	10: preload("res://assets/imagens_blocos/10.png"),
 	12: preload("res://assets/imagens_blocos/12.png"),
 	14: preload("res://assets/imagens_blocos/14.png"),
+	15: preload("res://assets/imagens_blocos/15.png"),
 	16: preload("res://assets/imagens_blocos/16.png"),
 	18: preload("res://assets/imagens_blocos/18.png"),
 	20: preload("res://assets/imagens_blocos/20.png"),
+	21: preload("res://assets/imagens_blocos/21.png"),
+	24: preload("res://assets/imagens_blocos/24.png"),
+	25: preload("res://assets/imagens_blocos/25.png"),
 }
 
 # CENA GENÉRICA DO BLOCO

@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://bekfyxj427xtj"]
+[gd_scene load_steps=17 format=4 uid="uid://bekfyxj427xtj"]
 
 [ext_resource type="Texture2D" uid="uid://dn8samab2x6jv" path="res://green.jpeg" id="1_44cfe"]
-[ext_resource type="Texture2D" uid="uid://j6w4ih2l8om" path="res://Olário_parado.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://nrl3kgqgjo8e" path="res://character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://dvvbb8ifm5nhr" path="res://terrain_tileset.png" id="2_dd465"]
 [ext_resource type="Texture2D" uid="uid://c6iwfk6j5sck6" path="res://pratfarmer3.png" id="3_dd465"]
+[ext_resource type="Texture2D" uid="uid://ba64ftf48cw2l" path="res://assets/Sprite_personagem/olario_andando_1.png" id="6_qnedo"]
+[ext_resource type="Texture2D" uid="uid://7q6x11rb7ud7" path="res://assets/Sprite_personagem/olario_parado.png" id="7_wyqjk"]
+[ext_resource type="Texture2D" uid="uid://0dbkgb3e2gbp" path="res://assets/Sprite_personagem/olario_andando_2.png" id="8_k85er"]
+[ext_resource type="Texture2D" uid="uid://cdx7jbb80vbyc" path="res://assets/Sprite_personagem/olario_picareta_2.png" id="9_ebjds"]
+[ext_resource type="Texture2D" uid="uid://b0v26svsy43bh" path="res://assets/Sprite_personagem/olario_picareta_3.png" id="10_y1dt5"]
+[ext_resource type="Texture2D" uid="uid://t81rnx2wnu1h" path="res://assets/Sprite_personagem/olario_picareta_1.png" id="11_au0nh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
 size = Vector2(1153, 150.75)
@@ -832,6 +837,48 @@ sources/1 = SubResource("TileSetAtlasSource_4sjlk")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qp52p"]
 size = Vector2(18, 38)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_76bt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qnedo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wyqjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k85er")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wyqjk")
+}],
+"loop": true,
+"name": &"Andando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wyqjk")
+}],
+"loop": true,
+"name": &"Parado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("9_ebjds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_y1dt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_au0nh")
+}],
+"loop": false,
+"name": &"Quebrando bloco",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -855,18 +902,22 @@ tile_set = SubResource("TileSet_4sjlk")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_ghijl")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(325.125, 472.125)
-scale = Vector2(0.0722727, 0.0773602)
-texture = ExtResource("1_f50pn")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(326, 471)
+position = Vector2(263, 472)
 shape = SubResource("RectangleShape2D_qp52p")
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
-position = Vector2(325, 462)
+position = Vector2(263, 457)
 target_position = Vector2(0, -26)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(263, 472.99997)
+scale = Vector2(2.1988635, 2.1346157)
+sprite_frames = SubResource("SpriteFrames_76bt2")
+animation = &"Quebrando bloco"
+frame = 2
+frame_progress = 1.0
+speed_scale = 1.2
 
 [node name="Block_position" type="Node2D" parent="."]
 
