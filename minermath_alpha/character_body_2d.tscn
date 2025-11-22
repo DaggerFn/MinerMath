@@ -909,7 +909,7 @@ sources/1 = SubResource("TileSetAtlasSource_4sjlk")
 sources/3 = SubResource("TileSetAtlasSource_k85er")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qp52p"]
-size = Vector2(18, 38)
+size = Vector2(23, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76bt2"]
 animations = [{
@@ -979,15 +979,23 @@ tile_set = SubResource("TileSet_4sjlk")
 script = ExtResource("1_ghijl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(263, 472)
+position = Vector2(213, 477)
 shape = SubResource("RectangleShape2D_qp52p")
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
-position = Vector2(263, 457)
-target_position = Vector2(0, -26)
+position = Vector2(213, 468)
+target_position = Vector2(0, -82)
+
+[node name="RayCast2D2" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(213, 468)
+target_position = Vector2(-27, -77)
+
+[node name="RayCast2D3" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(213, 468)
+target_position = Vector2(27, -77)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(263, 472.99997)
+position = Vector2(218, 480)
 scale = Vector2(2.1988635, 2.1346157)
 sprite_frames = SubResource("SpriteFrames_76bt2")
 animation = &"Quebrando bloco"
@@ -1001,7 +1009,7 @@ ignore_rotation = false
 zoom = Vector2(1.5, 1.5)
 
 [node name="Block_position" type="Node2D" parent="."]
-position = Vector2(1, -1)
+position = Vector2(-63, -2)
 
 [node name="Marker2D" type="Marker2D" parent="Block_position"]
 position = Vector2(215, 434)
@@ -1017,6 +1025,21 @@ position = Vector2(521, 438)
 
 [node name="Marker2D5" type="Marker2D" parent="Block_position"]
 position = Vector2(613, 438)
+
+[node name="Marker2D6" type="Marker2D" parent="Block_position"]
+position = Vector2(815, 435)
+
+[node name="Marker2D7" type="Marker2D" parent="Block_position"]
+position = Vector2(722, 435)
+
+[node name="Marker2D8" type="Marker2D" parent="Block_position"]
+position = Vector2(1124, 436)
+
+[node name="Marker2D9" type="Marker2D" parent="Block_position"]
+position = Vector2(1026, 435)
+
+[node name="Marker2D10" type="Marker2D" parent="Block_position"]
+position = Vector2(926, 437)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
