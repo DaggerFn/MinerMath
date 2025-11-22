@@ -5,10 +5,11 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -450.0
 var gravity = 980 
-var current_target_number: int = 3 # O divisor que o jogador deve procurar
+var current_target_number: int = 3
 
 @onready var block_detector = $RayCast2D 
 @onready var animated_sprite = $AnimatedSprite2D
+
 
 # --- VARIÁVEIS DO GERADOR DE NÍVEL ---
 # Pré-carrega a CENA SEPARADA de randomização
@@ -20,9 +21,18 @@ func _ready():
 	gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 	randomize() 
 	
+	var contador_node = get_parent()
+	if contador_node.has_signal("multiplo_alvo_pronto"):
+		contador_node.multiplo_alvo_pronto.connect(_on_multiplo_alvo_pronto)
+	else:
+		print("AVISO: Nó Pai não tem o sinal 'multiplo_alvo_pronto'. Usando valor padrão 3.")
+	
 	# 🔑 CHAMA O GERADOR DE NÍVEL, passando a raiz da cena (Node2D) como referência.
 	instantiate_and_generate_level(get_parent())
 
+func _on_multiplo_alvo_pronto(numero_multiplo: int):
+	current_target_number = numero_multiplo
+	print("Player RECEBEU o novo Múltiplo Alvo via Sinal: ", current_target_number)
 
 func _physics_process(delta):
 	# 1. Aplica a gravidade sempre

@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://bekfyxj427xtj"]
+[gd_scene load_steps=18 format=4 uid="uid://bekfyxj427xtj"]
 
 [ext_resource type="Texture2D" uid="uid://dn8samab2x6jv" path="res://green.jpeg" id="1_44cfe"]
 [ext_resource type="Script" uid="uid://nrl3kgqgjo8e" path="res://character_body_2d.gd" id="1_ghijl"]
+[ext_resource type="Script" uid="uid://cq0bsy4baeypu" path="res://contador.gd" id="1_qnedo"]
 [ext_resource type="Texture2D" uid="uid://dvvbb8ifm5nhr" path="res://terrain_tileset.png" id="2_dd465"]
 [ext_resource type="Texture2D" uid="uid://c6iwfk6j5sck6" path="res://pratfarmer3.png" id="3_dd465"]
 [ext_resource type="Texture2D" uid="uid://ba64ftf48cw2l" path="res://assets/Sprite_personagem/olario_andando_1.png" id="6_qnedo"]
@@ -879,7 +880,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("label_da_tela")]
+script = ExtResource("1_qnedo")
+label_da_tela = NodePath("CanvasLayer/Label")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
