@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bekfyxj427xtj"]
+[gd_scene load_steps=26 format=4 uid="uid://bekfyxj427xtj"]
 
 [ext_resource type="Texture2D" uid="uid://dn8samab2x6jv" path="res://green.jpeg" id="1_44cfe"]
 [ext_resource type="Script" uid="uid://nrl3kgqgjo8e" path="res://character_body_2d.gd" id="1_ghijl"]
@@ -19,6 +19,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
 size = Vector2(2062, 150.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_au0nh"]
+size = Vector2(116.5, 730)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76bt2"]
+size = Vector2(128, 723)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhvu3"]
 texture = ExtResource("2_dd465")
@@ -967,6 +973,14 @@ label_da_tela = NodePath("CanvasLayer/Label")
 position = Vector2(1022, 571.375)
 shape = SubResource("RectangleShape2D_ij6vw")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-41.25, 345)
+shape = SubResource("RectangleShape2D_au0nh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2102, 345.5)
+shape = SubResource("RectangleShape2D_76bt2")
+
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 offset_right = 1155.0
@@ -1029,6 +1043,21 @@ position = Vector2(521, 438)
 
 [node name="Marker2D5" type="Marker2D" parent="Block_position"]
 position = Vector2(613, 438)
+
+[node name="Marker2D15" type="Marker2D" parent="Block_position"]
+position = Vector2(1365, 438)
+
+[node name="Marker2D14" type="Marker2D" parent="Block_position"]
+position = Vector2(1673, 429)
+
+[node name="Marker2D13" type="Marker2D" parent="Block_position"]
+position = Vector2(1558, 434)
+
+[node name="Marker2D12" type="Marker2D" parent="Block_position"]
+position = Vector2(1459, 437)
+
+[node name="Marker2D11" type="Marker2D" parent="Block_position"]
+position = Vector2(1250, 436)
 
 [node name="Marker2D6" type="Marker2D" parent="Block_position"]
 position = Vector2(815, 435)
