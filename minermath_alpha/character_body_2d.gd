@@ -35,6 +35,12 @@ func _on_multiplo_alvo_pronto(numero_multiplo: int):
 	print("Player RECEBEU o novo Múltiplo Alvo via Sinal: ", current_target_number)
 
 func _physics_process(delta):
+	# Tem que ficar aqui em cima para funcionar mesmo se o personagem estiver travado
+	if Input.is_action_just_pressed("restart"):
+		print("Reiniciando...") # Debug para sabermos que funcionou
+		get_tree().reload_current_scene()
+		return # Opcional: para de processar o resto já que vai reiniciar
+		
 	# 1. Aplica a gravidade sempre
 	if not is_on_floor(): 
 		velocity.y += gravity * delta
@@ -67,6 +73,16 @@ func _physics_process(delta):
 	# 6. Atualiza Animação e Movimento
 	update_movement_animation()
 	move_and_slide()
+	
+	# ... seu código de movimento e pulo ...
+
+	# 7. Lógica de Reinício
+	if Input.is_action_just_pressed("reiniciar"):
+		# Opção A: Recarrega a cena atual (Mais prático)
+		get_tree().reload_current_scene()
+		
+		# Opção B: Se você preferir carregar o arquivo específico como mencionou:
+		# get_tree().change_scene_to_file("res://character_body_2d.tscn")
 	
 func update_movement_animation():
 	if is_breaking:

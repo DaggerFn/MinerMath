@@ -1123,3 +1123,9 @@ position = Vector2(78, 265.00003)
 scale = Vector2(0.4602076, 0.37454548)
 texture_normal = ExtResource("15_au0nh")
 action = "ui_accept"
+
+[node name="BtnReiniciar" type="TouchScreenButton" parent="ControlesMobile"]
+position = Vector2(432.00003, 385.99997)
+scale = Vector2(0.43629342, 0.3786765)
+texture_normal = ExtResource("16_76bt2")
+action = "restart"
