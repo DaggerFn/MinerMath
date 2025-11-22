@@ -14,3 +14,8 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+minermath_alpha/web/
+minermath_alpha/win/
+minermath_alpha/apk/
+minermath_alpha/minermath_alpha.zip
