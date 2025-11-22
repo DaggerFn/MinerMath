@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bekfyxj427xtj"]
+[gd_scene load_steps=24 format=4 uid="uid://bekfyxj427xtj"]
 
 [ext_resource type="Texture2D" uid="uid://dn8samab2x6jv" path="res://green.jpeg" id="1_44cfe"]
 [ext_resource type="Script" uid="uid://nrl3kgqgjo8e" path="res://character_body_2d.gd" id="1_ghijl"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cdx7jbb80vbyc" path="res://assets/Sprite_personagem/olario_picareta_2.png" id="9_ebjds"]
 [ext_resource type="Texture2D" uid="uid://b0v26svsy43bh" path="res://assets/Sprite_personagem/olario_picareta_3.png" id="10_y1dt5"]
 [ext_resource type="Texture2D" uid="uid://t81rnx2wnu1h" path="res://assets/Sprite_personagem/olario_picareta_1.png" id="11_au0nh"]
+[ext_resource type="Texture2D" uid="uid://dmxso3j6rtse8" path="res://assets/uiButtons/Button_right.png" id="13_k85er"]
+[ext_resource type="Texture2D" uid="uid://ta1w6w4ligo1" path="res://assets/uiButtons/Button_left.png" id="14_ebjds"]
+[ext_resource type="Texture2D" uid="uid://y3xrpx1l63b1" path="res://assets/uiButtons/Button_jump.png" id="15_au0nh"]
+[ext_resource type="Texture2D" uid="uid://du62neqbsda3a" path="res://assets/uiButtons/Button_break.png" id="16_76bt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
 size = Vector2(2062, 150.75)
@@ -1047,3 +1051,46 @@ position = Vector2(926, 437)
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Multiplo: "
+
+[node name="ControlesMobile" type="CanvasLayer" parent="."]
+
+[node name="ControlesEsquerda" type="Control" parent="ControlesMobile"]
+layout_mode = 3
+anchor_left = 0.298
+anchor_top = 0.21800001
+anchor_right = 0.298
+anchor_bottom = 0.21800001
+offset_left = -303.29602
+offset_top = -101.26401
+offset_right = -303.29602
+offset_bottom = -101.26401
+
+[node name="BtnDireita" type="TouchScreenButton" parent="ControlesMobile/ControlesEsquerda"]
+position = Vector2(837, 373)
+scale = Vector2(0.5727275, 0.5154639)
+texture_normal = ExtResource("13_k85er")
+action = "ui_right"
+
+[node name="BtnEsquerda" type="TouchScreenButton" parent="ControlesMobile/ControlesEsquerda"]
+position = Vector2(706, 370.99997)
+scale = Vector2(0.47163126, 0.40304187)
+texture_normal = ExtResource("14_ebjds")
+action = "ui_left"
+
+[node name="ControlesDireita" type="Control" parent="ControlesMobile"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BtnQuebrar" type="TouchScreenButton" parent="ControlesMobile/ControlesDireita"]
+position = Vector2(86, 367)
+scale = Vector2(0.4440155, 0.38235283)
+texture_normal = ExtResource("16_76bt2")
+action = "interact"
+
+[node name="BtnPulo" type="TouchScreenButton" parent="ControlesMobile/ControlesDireita"]
+position = Vector2(78, 265.00003)
+scale = Vector2(0.4602076, 0.37454548)
+texture_normal = ExtResource("15_au0nh")
+action = "ui_accept"
