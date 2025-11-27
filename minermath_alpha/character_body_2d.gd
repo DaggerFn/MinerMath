@@ -2,7 +2,7 @@
 extends CharacterBody2D
 
 # --- VARIÁVEIS DE MOVIMENTO ---
-const SPEED = 200.0
+const SPEED = 500.0
 const JUMP_VELOCITY = -450.0
 var gravity = 980 
 var current_target_number: int = 3
